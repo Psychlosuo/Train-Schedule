@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Train Guide</title>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <script>
+        var config = {
+            apiKey: "AIzaSyBWyBa_6hfyn0fNcWlZ6HVODHdCjc8tiZ8",
+            authDomain: "train-project-614eb.firebaseapp.com",
+            databaseURL: "https://train-project-614eb.firebaseio.com",
+            projectId: "train-project-614eb",
+            storageBucket: "train-project-614eb.appspot.com",
+            messagingSenderId: "976626985385"
+        };
+
+        firebase.initializeApp(config);
+        var database = firebase.database()
+
+        var queryURL = "http://transportapi.com/v3/uk/places.json?query=euston&type=train_station&app_id=7343554e&app_key=41960675b5aa76367ab34516017e886a";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(updatePage);
+
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="assets/trainschedule.js"></script>
+    <script src="assets/style.css"></script>
+
+    <link rel="stylesheet" href="assets/style.css">
+
+    <div id="clock">
+
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="jumbo">Train Guide</h1>
+        <img src="https://media.wired.com/photos/593265c09be5e55af6c24968/master/w_1200,c_limit/siemens-locomotives.jpg"
+            id="trainImg">
+        <p class="lead">Find the latest train schedules all in one place</p>
+
+        <ul class="results">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Train name
+                    </div>
+                    <div class="col-sm-3">
+                        Destination
+                    </div>
+                    <div class="col-sm-3">
+                        First train time
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                </div>
+            </div>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+            <li class="list-group-item"></li>
+        </ul>
+
+        <form>
+            <div class="userInput">
+                <label for="trainName">Train Name</label>
+                <input type="form" class="form-control" id="trainName" aria-describedby="emailHelp" placeholder="Name">
+                <label for="Destination">Destination</label>
+                <input type="form" class="form-control" id="destination" placeholder="Destination">
+                <label for="trainTime">First train time(HH:MM)</label>
+                <input type="form" class="form-control" id="trainTime" aria-describedby="Time" placeholder="Train time">
+                <label for="Frequency">Frequency(min)</label>
+                <input type="form" class="form-control" id="exampleInputPassword1" placeholder="Frequency">
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
